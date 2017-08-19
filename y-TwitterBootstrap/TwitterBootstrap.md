@@ -5,7 +5,7 @@ Twitter Bootstrapは、Twitter社が開発したMITライセンスのHTML/CSS/Ja
 ## フラットデザイン以前
 AppleやMicrosoftに限らず、全世界のデザイナーが考えている問題として、**ディスプレイ上で直感的に理解しやすく、かつ高機能なUIはどのように設計するべきか**というものがある。この問題に対して、Appleはまずスキュアモーフィックデザインを提唱した。
 
-![img](skeuos.png =100x)
+<img src="https://raw.githubusercontent.com/akihiro-iwata/tutorial/master/y-TwitterBootstrap/skeuos.png" alt="img" width=300>
 
 スキュアモーフィックデザインの主な特徴としては
 - 視覚的にリッチ
@@ -20,7 +20,7 @@ AppleやGoogle、Microsoftといった会社は、最終的には自社のプロ
 
 ## フラットデザイン
 
-![img](flat.png = 100x)
+![img](flat.png)
 
 フラットデザインの主な特徴としては
 - グラデーションやテクスチャの排除
