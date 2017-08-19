@@ -55,5 +55,9 @@ Twitter Bootstrapは、このレスポンシブデザインとフラットデザ
 Twitter Bootstrapはデフォルトでフラットデザインをサポートしている。このライブラリが提供するコンポーネントを普通に使えば問題ない。
 
 ### Twitter Bootstrapのレスポンシブデザイン
-(ここで力尽きたので、一旦ここまで)
+以下を参照
+https://getbootstrap.com/docs/4.0/layout/overview/
 
+### Excercise
+- Apple, Google等が公開しているインターフェース/デザインガイドラインを読み、Overviewをまとめてください。(Human Interface Guideline, Material Design Guideline)
+- 作成したブログ記事を、Bootstrapを用いて、レスポンシブデザイン対応させてください。
