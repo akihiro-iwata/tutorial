@@ -32,6 +32,19 @@ Windows PCで主に使用されるハイパーバイザーは、以下の3種類
 - Oracle Virtual Boxを用いて、Ubuntuサーバーを立ててください。
   - 参照リンク: http://qiita.com/ykawakami/items/4bae371932110b2e25e3
 
+## コマンドラインでLinuxを操作する
+LinuxはWindowsと異なり、Grafic User Interface(GUI)ではなく、Command Line Interface(CLI)での操作が中心となる。  
+特に多いのが、SSHクライアント(teraterm, PuTTY)を使用してLinuxへ接続し、ファイル操作やコマンド実行を行なうケースである。  
+
+### Exercise
+- 以下のサイトを参照し、Linuxのコマンドライン操作を理解してください。
+  - http://qiita.com/lrf141/items/4dadd107c1ac778260e5
+
+- `ls`コマンドを使用して、ファイルのパーミッション、グループ名、ユーザー名、ファイルサイズ、更新日時、ファイル名を出力してください。
+  - ヒント: `man ls`で`ls`コマンドのオプションが見られます
+
+- `ls`コマンドを使用して出力される結果のうち、`Micky`という文字列をファイル名に含むものだけを抽出してください。
+  - ヒント: `|`(パイプ)を使用することで、複数のコマンドを併せて使うことができます。
 
 ## LinuxへApacheをインストールする
 HTTP(S)を使用したアプリケーションのことをWebアプリケーションと呼ぶ。  
