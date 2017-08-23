@@ -32,6 +32,10 @@ Windows PCで主に使用されるハイパーバイザーは、以下の3種類
 - Oracle Virtual Boxを用いて、Ubuntuサーバーを立ててください。
   - 参照リンク: http://qiita.com/ykawakami/items/4bae371932110b2e25e3
 
+- LinuxにはUbuntu以外にも様々な種類(ディストリビューション)がある。  
+  - Ubuntu以外のディストリビューションを3つ調べてください。  
+  - これらのLinuxディストリビューションに共通する要素を挙げてください。
+
 ## コマンドラインでLinuxを操作する
 LinuxはWindowsと異なり、Grafic User Interface(GUI)ではなく、Command Line Interface(CLI)での操作が中心となる。  
 特に多いのが、SSHクライアント(teraterm, PuTTY)を使用してLinuxへ接続し、ファイル操作やコマンド実行を行なうケースである。  
@@ -64,5 +68,3 @@ Webアプリケーションを公開するためにはWebサーバーが必須�
   - 参照リンク: http://d.hatena.ne.jp/bicycle1885/20110508/1304871358
 
 - インストールが完了したら、Windows側のインターネットブラウザーから、Apacheへアクセスできるようにしてください。  
-
-
