@@ -204,8 +204,9 @@ Virtualhostを使用することで、複数のWebサイトを単一のApacheで
 Work in progress
 
 ### Exercise
-- 任意のディレクトリをルートディレクトリとし、Webサイトを作成してください。  
-- Apacheは`mod_rewrite`というモジュールを利用することで、URLとサーバー内のディレクトリ階層の紐付けを柔軟に変更することができる。  
+- 任意のディレクトリをルートディレクトリとし、Webサイトを作成してください。
+  - ヒント: http://qiita.com/zaburo/items/b9c3c8c541ffd16797fc
+- Apacheは`mod_rewrite`というモジュールを利用することで、URLとサーバー内のディレクトリ階層の紐付けを柔軟に変更することができる。
   - `mod_rewrite`を使用し、`.html`という拡張子をurl内で指定しなくても、当該htmlへアクセスするように設定してください。
   - ヒント: http://combitaro.net/article/136
 
