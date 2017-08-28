@@ -105,7 +105,52 @@ Apacheで良く参照するファイルは、以下の2種が挙げられる。
 - httpd.confを参照してください。
 - HTTPリクエストを送った後に、その情報がどのようにログ出力されているのかについて、access-logを確認してください。
 
-## ルートディレクトリの設定
+## Virtualhostの設定
+
+![img](http://www.pimschaaf.nl/wp-content/uploads/2016/07/Virtual-Host-Multiple-Websites-Ubuntu-13.10-and-Rackspace-Cloud-Server.png)  
+出典元: http://www.pimschaaf.nl/xampp-with-virtual-hosts-configuration/
+
+Apacheを使用してWebサイトを公開する際には、Virtualhostという単位でこれを行なう。  
+Virtualhostとは、**単一のApacheで、別々のドメインである別々のWebサイトを公開する**ためにApacheが持つ機能である。  
+Apache上で１つのWebサイトのみを公開する場合でもVirtualhostを使うことが多く、デファクト・スタンダードとなっている。
+
+Virtualhostの設定は`httpd.conf`か、`extra`フォルダ上の`httpd-vhosts.conf`上で行なう。  
+`httpd.conf`は`Include`句を用いることで、他のconfファイルを追加で読み込むことができる。  
+`httpd.conf`はVirtualhost以外にも多数の設定項目を持つため、Virtualhostの設定は、別のconfファイルに外だしすることが望ましい。(というより、ちゃんとしたインフラエンジニアがいた場合、ここで横着すると注意されます)
+
+Virutalhostは、以下のような構文を持つ。
+```
+<VirtualHost *:8080>
+  DocumentRoot myblog.com
+  ServerName myblog.com
+  ErrorLog logs/host.example.com-error_log
+  TransferLog logs/host.example.com-access_log
+  <directory />
+    options followsymlinks
+    allowoverride all
+    require all granted
+  </directory>
+</VirtualHost>
+```
+以下、Virtualhostを用いてWebサイトを公開する際に必要な項目の一部を記載する。  
+なお、詳細については以下のリンクを参照。  
+https://httpd.apache.org/docs/2.4/ja/mod/core.html
+
+### Listenディレクティブ
+HTTP通信はtcp/ipのポート80を使用する。一般に、通信が来たタイミングで処理するためにあるプロセスが特定のサーバーの特定のポートを監視することを、プロセスがポートXXを`Listen`している、と呼ぶ。  
+Apacheはデフォルトでポート80をListenしている。仮想マシンをローカルで複数動かしている場合に多いケースが、ポート80の通信がホストOSのApacheやIISで使用されており、ゲストOSへ転送できないというものである。  
+Apacheで80番以外のポートを使ってHTTP通信を行う際は`Listen`ディレクティブを使用する。  
+
+例: `Listen 8080`
+
+### Virtualhostディレクティブ
+Virtualhostは、以下の構文を持つ。
+
+`<VirtualHost addr[:port] [addr[:port]] ...> ... </VirtualHost>`
+
+上記のサンプルでは`<VirtualHost *:8080>`と記載した。この`*`はApacheが動作するサーバーが持つIPアドレスすべて、`8080`はポート8080番で、Webサイトを公開するという意味を持つ。  
+
+### Documentrootディレクティブ
 以下のHTML,CSS,Javascriptを使用する、簡易的なブログサイトを作成するとする。  
 
 - ドメイン  
@@ -129,13 +174,34 @@ Apacheのデフォルト設定では、URLの階層構造は、そのままデ�
        |- <日付>.html
 ```
 というディレクトリ構成になる。
-Apacheにおける**ルートディレクトリ**とは、あるサイトのURLの最上位階層と、サーバー内のディレクトリ階層を紐付ける機能を有する。  
+Apacheの**DocumentRootディレクティブ**は、あるサイトのURLの最上位階層と、サーバー内のディレクトリ階層を紐付ける機能を有する。  
 例えば、上記のルートディレクトリを`/var/www/html/myblog/`というディレクトリにした場合
 
 - `http://myblog.com/welcome.html` => `/var/www/html/myblog/welcome.html`
 - `http://myblog.com/article/view/20170827.html` => `/var/www/html/myblog/article/view/20170827.html`
 
 という紐付が行われる。
+
+### ServerNameディレクティブ
+Virtualhostを使用することで、複数のWebサイトを単一のApacheで公開することができる。  
+例えば`http://myblog.com`というURLが存在した場合  
+
+- `http://` => ポートの識別
+- `myblog.com` => サーバーの識別
+
+となるため、**どのサーバーのどのポートか**という点については特定されている。  
+ここに、**どのサイトか**を識別するために使用するのが**ServerNameディレクティブ**である。  
+
+サンプルでは`ServerName myblog.com`と記載した。これは、**自サーバーへのポート8080のアクセスのうち、myblog.comというドメインでアクセスしているものについてのみ、対応する**という意味である。  
+単一のIPアドレスに対して複数のドメインを紐付けることができる。単一のApacheで複数のWebサイトを公開する場合には、以下が必要となる。
+
+- ドメインAとドメインBを、サーバーXへ紐付ける(DNSレコードの登録)
+- ドメインAとドメインB毎にVirtualServerを宣言し、ServerNameディレクティブでドメインを指定する
+
+サンプルでは、IPアドレス直打ちによるアクセスをしても、`myblog.com`は参照されないように設定されている。
+
+### Directoryディレクティブ
+Work in progress
 
 ### Exercise
 - 任意のディレクトリをルートディレクトリとし、Webサイトを作成してください。  
