@@ -55,7 +55,7 @@ PHPはWebアプリケーション開発のために設計、実装されたと�
 WebサーバーがHTMLを返すまでのフローは以下のように示せる。  
 (引用: https://image.slidesharecdn.com/20120710phpbuild-120710052328-phpapp02/95/8-php-9-728.jpg?cb=1341898223)  
 
-![img](https://image.slidesharecdn.com/20120710phpbuild-120710052328-phpapp02/95/8-php-9-728.jpg?cb=1341898223 x=200)
+![img](https://image.slidesharecdn.com/20120710phpbuild-120710052328-phpapp02/95/8-php-9-728.jpg?cb=1341898223)
 
 Apacheは、リクエストに含まれるURLやHTTPヘッダーフィールド、ボディフィールドの中身を解釈する機能を有している。  
 ApacheはC言語で書かれている。極論、上記の情報を解釈し、必要であればDBへSQL発行及び結果を取得し、HTMLを生成するプログラムをC言語で書いてしまえば、  
